@@ -1,379 +1,439 @@
 /* =====================================================
-   MOODTUNE - MOOD BASED MUSIC WEBSITE
+   MOODTUNE
+   Mood Based Music Recommendation System
    ===================================================== */
 
 
-/* -----------------------------
+/* =====================================================
    MUSIC DATABASE
------------------------------ */
+
+   Each mood contains:
+   10 Hindi songs
+   10 English songs
+   ===================================================== */
 
 const music = {
 
-    happy: [
-        {
-            title: "Happy",
-            artist: "Pharrell Williams",
-            search: "Happy Pharrell Williams"
-        },
-        {
-            title: "Perfect",
-            artist: "Ed Sheeran",
-            search: "Perfect Ed Sheeran",
-            video: "2Vv-BfVoq4g"
-        },
-        {
-            title: "Count on Me",
-            artist: "Bruno Mars",
-            search: "Count on Me Bruno Mars"
-        },
-        {
-            title: "Love Yourself",
-            artist: "Justin Bieber",
-            search: "Love Yourself Justin Bieber"
-        },
-        {
-            title: "On Top of the World",
-            artist: "Imagine Dragons",
-            search: "On Top of the World Imagine Dragons"
-        }
-    ],
+    Happy: {
 
-    sad: [
-        {
-            title: "Lovely",
-            artist: "Billie Eilish",
-            search: "Lovely Billie Eilish"
-        },
-        {
-            title: "Someone Like You",
-            artist: "Adele",
-            search: "Someone Like You Adele"
-        },
-        {
-            title: "Let Her Go",
-            artist: "Passenger",
-            search: "Let Her Go Passenger"
-        },
-        {
-            title: "Arcade",
-            artist: "Duncan Laurence",
-            search: "Arcade Duncan Laurence"
-        },
-        {
-            title: "The Night We Met",
-            artist: "Lord Huron",
-            search: "The Night We Met Lord Huron"
-        }
-    ],
+        Hindi: [
 
-    calm: [
-        {
-            title: "All of Me",
-            artist: "John Legend",
-            search: "All of Me John Legend",
-            video: "450p7goxZqg"
-        },
-        {
-            title: "Until I Found You",
-            artist: "Stephen Sanchez",
-            search: "Until I Found You Stephen Sanchez"
-        },
-        {
-            title: "Yellow",
-            artist: "Coldplay",
-            search: "Yellow Coldplay"
-        },
-        {
-            title: "Photograph",
-            artist: "Ed Sheeran",
-            search: "Photograph Ed Sheeran"
-        },
-        {
-            title: "Ocean Eyes",
-            artist: "Billie Eilish",
-            search: "Ocean Eyes Billie Eilish"
-        }
-    ],
+            ["Ilahi", "Arijit Singh"],
+            ["Love You Zindagi", "Amit Trivedi"],
+            ["Badtameez Dil", "Benny Dayal"],
+            ["Gallan Goodiyaan", "Yashita Sharma, Manish Kumar Tipu & others"],
+            ["London Thumakda", "Labh Janjua, Sonu Kakkar & Neha Kakkar"],
+            ["Ainvayi Ainvayi", "Salim Merchant & Sunidhi Chauhan"],
+            ["Senorita", "Farhan Akhtar, Hrithik Roshan & Abhay Deol"],
+            ["Ude Dil Befikre", "Benny Dayal"],
+            ["Khaabon Ke Parinday", "Mohit Chauhan & Alyssa Mendonsa"],
+            ["Patakha Guddi", "Nooran Sisters"]
 
-    energetic: [
-        {
-            title: "Believer",
-            artist: "Imagine Dragons",
-            search: "Believer Imagine Dragons"
-        },
-        {
-            title: "Thunder",
-            artist: "Imagine Dragons",
-            search: "Thunder Imagine Dragons"
-        },
-        {
-            title: "Blinding Lights",
-            artist: "The Weeknd",
-            search: "Blinding Lights The Weeknd"
-        },
-        {
-            title: "Levitating",
-            artist: "Dua Lipa",
-            search: "Levitating Dua Lipa"
-        },
-        {
-            title: "On My Way",
-            artist: "Alan Walker",
-            search: "On My Way Alan Walker"
-        }
-    ],
+        ],
 
-    romantic: [
-        {
-            title: "All of Me",
-            artist: "John Legend",
-            search: "All of Me John Legend",
-            video: "450p7goxZqg"
-        },
-        {
-            title: "Perfect",
-            artist: "Ed Sheeran",
-            search: "Perfect Ed Sheeran",
-            video: "2Vv-BfVoq4g"
-        },
-        {
-            title: "A Thousand Years",
-            artist: "Christina Perri",
-            search: "A Thousand Years Christina Perri"
-        },
-        {
-            title: "Until I Found You",
-            artist: "Stephen Sanchez",
-            search: "Until I Found You Stephen Sanchez"
-        },
-        {
-            title: "Die With A Smile",
-            artist: "Lady Gaga Bruno Mars",
-            search: "Die With A Smile Lady Gaga Bruno Mars"
-        }
-    ],
+        English: [
 
-    focus: [
-        {
-            title: "Weightless",
-            artist: "Marconi Union",
-            search: "Weightless Marconi Union"
-        },
-        {
-            title: "Experience",
-            artist: "Ludovico Einaudi",
-            search: "Experience Ludovico Einaudi"
-        },
-        {
-            title: "River Flows in You",
-            artist: "Yiruma",
-            search: "River Flows in You Yiruma"
-        },
-        {
-            title: "Comptine d'un autre été",
-            artist: "Yann Tiersen",
-            search: "Comptine d'un autre été Yann Tiersen"
-        },
-        {
-            title: "Nuvole Bianche",
-            artist: "Ludovico Einaudi",
-            search: "Nuvole Bianche Ludovico Einaudi"
-        }
-    ],
+            ["Happy", "Pharrell Williams"],
+            ["Uptown Funk", "Mark Ronson ft. Bruno Mars"],
+            ["Can't Stop the Feeling!", "Justin Timberlake"],
+            ["Shake It Off", "Taylor Swift"],
+            ["On Top of the World", "Imagine Dragons"],
+            ["Good Time", "Owl City & Carly Rae Jepsen"],
+            ["Best Day of My Life", "American Authors"],
+            ["Walking on Sunshine", "Katrina and the Waves"],
+            ["Dynamite", "Taio Cruz"],
+            ["Firework", "Katy Perry"]
 
-    chill: [
-        {
-            title: "Sunflower",
-            artist: "Post Malone Swae Lee",
-            search: "Sunflower Post Malone Swae Lee"
-        },
-        {
-            title: "Lovely",
-            artist: "Billie Eilish",
-            search: "Lovely Billie Eilish"
-        },
-        {
-            title: "Until I Found You",
-            artist: "Stephen Sanchez",
-            search: "Until I Found You Stephen Sanchez"
-        },
-        {
-            title: "Sweater Weather",
-            artist: "The Neighbourhood",
-            search: "Sweater Weather The Neighbourhood"
-        },
-        {
-            title: "Golden Hour",
-            artist: "JVKE",
-            search: "Golden Hour JVKE"
-        }
-    ],
+        ]
 
-    party: [
-        {
-            title: "Uptown Funk",
-            artist: "Mark Ronson ft. Bruno Mars",
-            search: "Uptown Funk Mark Ronson Bruno Mars"
-        },
-        {
-            title: "Dance Monkey",
-            artist: "Tones and I",
-            search: "Dance Monkey Tones and I"
-        },
-        {
-            title: "Levitating",
-            artist: "Dua Lipa",
-            search: "Levitating Dua Lipa"
-        },
-        {
-            title: "Don't Start Now",
-            artist: "Dua Lipa",
-            search: "Don't Start Now Dua Lipa"
-        },
-        {
-            title: "Cheap Thrills",
-            artist: "Sia",
-            search: "Cheap Thrills Sia"
-        }
-    ]
+    },
+
+
+    Sad: {
+
+        Hindi: [
+
+            ["Channa Mereya", "Arijit Singh"],
+            ["Agar Tum Saath Ho", "Alka Yagnik & Arijit Singh"],
+            ["Hamari Adhuri Kahani", "Arijit Singh"],
+            ["Tujhe Kitna Chahne Lage", "Arijit Singh"],
+            ["Phir Bhi Tumko Chaahunga", "Arijit Singh & Shashaa Tirupati"],
+            ["Ae Dil Hai Mushkil", "Arijit Singh"],
+            ["Bhula Dena", "Mustafa Zahid"],
+            ["Sach Keh Raha Hai Deewana", "KK"],
+            ["Tune Jo Na Kaha", "Mohit Chauhan"],
+            ["Mann Bharryaa 2.0", "B Praak"]
+
+        ],
+
+        English: [
+
+            ["Lovely", "Billie Eilish & Khalid"],
+            ["Someone Like You", "Adele"],
+            ["The Night We Met", "Lord Huron"],
+            ["Let Her Go", "Passenger"],
+            ["Arcade", "Duncan Laurence"],
+            ["When I Was Your Man", "Bruno Mars"],
+            ["Another Love", "Tom Odell"],
+            ["Dancing With Your Ghost", "Sasha Alex Sloan"],
+            ["Before You Go", "Lewis Capaldi"],
+            ["All I Want", "Kodaline"]
+
+        ]
+
+    },
+
+
+    Calm: {
+
+        Hindi: [
+
+            ["Iktara", "Kavita Seth"],
+            ["Kun Faya Kun", "A.R. Rahman, Javed Ali & Mohit Chauhan"],
+            ["Shaam", "Amit Trivedi & Nikhil D'Souza"],
+            ["Aaj Jaane Ki Zid Na Karo", "Farida Khanum"],
+            ["Kho Gaye Hum Kahan", "Jasleen Royal & Prateek Kuhad"],
+            ["Phir Le Aaya Dil", "Arijit Singh"],
+            ["Aahista", "Arijit Singh & Jonita Gandhi"],
+            ["Kabira", "Tochi Raina & Rekha Bhardwaj"],
+            ["Saibo", "Shreya Ghoshal & Tochi Raina"],
+            ["Tu Bin Bataye", "Madhushree & Naresh Iyer"]
+
+        ],
+
+        English: [
+
+            ["Perfect", "Ed Sheeran"],
+            ["Photograph", "Ed Sheeran"],
+            ["Dandelions", "Ruth B."],
+            ["Golden Hour", "JVKE"],
+            ["Ocean Eyes", "Billie Eilish"],
+            ["Until I Found You", "Stephen Sanchez"],
+            ["Yellow", "Coldplay"],
+            ["A Thousand Years", "Christina Perri"],
+            ["Lovely", "Billie Eilish & Khalid"],
+            ["All of Me", "John Legend"]
+
+        ]
+
+    },
+
+
+    Energetic: {
+
+        Hindi: [
+
+            ["Malhari", "Vishal Dadlani"],
+            ["Zinda", "Siddharth Mahadevan"],
+            ["Jai Jai Shivshankar", "Vishal Dadlani & Benny Dayal"],
+            ["Apna Time Aayega", "Ranveer Singh"],
+            ["Sultan Title Track", "Sukhwinder Singh & Shadab Faridi"],
+            ["Brothers Anthem", "Ajay-Atul"],
+            ["Kar Har Maidaan Fateh", "Sukhwinder Singh & Shreya Ghoshal"],
+            ["Chak De India", "Sukhwinder Singh"],
+            ["Dhan Te Nan", "Sukhwinder Singh & Vishal Dadlani"],
+            ["Aarambh Hai Prachand", "Piyush Mishra"]
+
+        ],
+
+        English: [
+
+            ["Believer", "Imagine Dragons"],
+            ["Thunder", "Imagine Dragons"],
+            ["Whatever It Takes", "Imagine Dragons"],
+            ["Don't Start Now", "Dua Lipa"],
+            ["Levitating", "Dua Lipa"],
+            ["Titanium", "David Guetta ft. Sia"],
+            ["Eye of the Tiger", "Survivor"],
+            ["Counting Stars", "OneRepublic"],
+            ["Centuries", "Fall Out Boy"],
+            ["The Nights", "Avicii"]
+
+        ]
+
+    },
+
+
+    Romantic: {
+
+        Hindi: [
+
+            ["Tum Se Hi", "Mohit Chauhan"],
+            ["Raabta", "Arijit Singh"],
+            ["Hawayein", "Arijit Singh"],
+            ["Apna Bana Le", "Arijit Singh"],
+            ["Tum Kya Mile", "Arijit Singh & Shreya Ghoshal"],
+            ["Tera Ban Jaunga", "Akhil Sachdeva & Tulsi Kumar"],
+            ["Pehli Dafa", "Atif Aslam"],
+            ["Tera Hone Laga Hoon", "Atif Aslam & Alisha Chinai"],
+            ["Mast Magan", "Arijit Singh & Chinmayi"],
+            ["Nazm Nazm", "Arko"]
+
+        ],
+
+        English: [
+
+            ["Perfect", "Ed Sheeran"],
+            ["All of Me", "John Legend"],
+            ["A Thousand Years", "Christina Perri"],
+            ["Love Story", "Taylor Swift"],
+            ["Until I Found You", "Stephen Sanchez"],
+            ["Photograph", "Ed Sheeran"],
+            ["Just the Way You Are", "Bruno Mars"],
+            ["Adore You", "Harry Styles"],
+            ["Lover", "Taylor Swift"],
+            ["Say You Won't Let Go", "James Arthur"]
+
+        ]
+
+    },
+
+
+    Focus: {
+
+        Hindi: [
+
+            ["Zinda", "Siddharth Mahadevan"],
+            ["Lakshya", "Shankar Mahadevan"],
+            ["Kar Har Maidaan Fateh", "Sukhwinder Singh & Shreya Ghoshal"],
+            ["Aashayein", "KK & Salim Merchant"],
+            ["Roobaroo", "A.R. Rahman & Naresh Iyer"],
+            ["Aarambh Hai Prachand", "Piyush Mishra"],
+            ["Besabriyaan", "Armaan Malik"],
+            ["Parwah Nahin", "Siddharth Basrur"],
+            ["Sultan Title Track", "Sukhwinder Singh & Shadab Faridi"],
+            ["Chak De India", "Sukhwinder Singh"]
+
+        ],
+
+        English: [
+
+            ["Believer", "Imagine Dragons"],
+            ["Whatever It Takes", "Imagine Dragons"],
+            ["Hall of Fame", "The Script ft. will.i.am"],
+            ["Unstoppable", "Sia"],
+            ["Rise", "The Glitch Mob"],
+            ["The Climb", "Miley Cyrus"],
+            ["Fight Song", "Rachel Platten"],
+            ["Stronger", "Kelly Clarkson"],
+            ["Lose Yourself", "Eminem"],
+            ["On Top of the World", "Imagine Dragons"]
+
+        ]
+
+    },
+
+
+    Chill: {
+
+        Hindi: [
+
+            ["Kasoor", "Prateek Kuhad"],
+            ["cold/mess", "Prateek Kuhad"],
+            ["Kho Gaye Hum Kahan", "Jasleen Royal & Prateek Kuhad"],
+            ["Iktara", "Kavita Seth"],
+            ["Shaam", "Amit Trivedi & Nikhil D'Souza"],
+            ["Aaj Jaane Ki Zid Na Karo", "Farida Khanum"],
+            ["Khaabon Ke Parinday", "Mohit Chauhan & Alyssa Mendonsa"],
+            ["Phir Le Aaya Dil", "Arijit Singh"],
+            ["Alag Aasmaan", "Anuv Jain"],
+            ["Baarishein", "Anuv Jain"]
+
+        ],
+
+        English: [
+
+            ["Sunflower", "Post Malone & Swae Lee"],
+            ["Golden Hour", "JVKE"],
+            ["Ocean Eyes", "Billie Eilish"],
+            ["Lovely", "Billie Eilish & Khalid"],
+            ["Until I Found You", "Stephen Sanchez"],
+            ["Yellow", "Coldplay"],
+            ["Sweater Weather", "The Neighbourhood"],
+            ["As It Was", "Harry Styles"],
+            ["Daylight", "David Kushner"],
+            ["Line Without a Hook", "Ricky Montgomery"]
+
+        ]
+
+    },
+
+
+    Party: {
+
+        Hindi: [
+
+            ["Kala Chashma", "Amar Arshi, Badshah & Neha Kakkar"],
+            ["Nashe Si Chadh Gayi", "Arijit Singh"],
+            ["Badtameez Dil", "Benny Dayal"],
+            ["Gallan Goodiyaan", "Yashita Sharma, Manish Kumar Tipu & others"],
+            ["London Thumakda", "Labh Janjua, Sonu Kakkar & Neha Kakkar"],
+            ["Abhi Toh Party Shuru Hui Hai", "Aastha Gill"],
+            ["Kar Gayi Chull", "Badshah, Fazilpuria, Sukriti Kakar & Neha Kakkar"],
+            ["The Breakup Song", "Arijit Singh, Badshah, Jonita Gandhi & Nakash Aziz"],
+            ["Aankh Marey", "Neha Kakkar, Mika Singh & Kumar Sanu"],
+            ["Saturday Saturday", "Shaarib-Toshi, Badshah & others"]
+
+        ],
+
+        English: [
+
+            ["Uptown Funk", "Mark Ronson ft. Bruno Mars"],
+            ["Party Rock Anthem", "LMFAO"],
+            ["Dance Monkey", "Tones and I"],
+            ["Levitating", "Dua Lipa"],
+            ["Don't Start Now", "Dua Lipa"],
+            ["Dynamite", "Taio Cruz"],
+            ["I Gotta Feeling", "The Black Eyed Peas"],
+            ["Shake It Off", "Taylor Swift"],
+            ["Tik Tok", "Kesha"],
+            ["On The Floor", "Jennifer Lopez ft. Pitbull"]
+
+        ]
+
+    }
 
 };
 
 
-/* -----------------------------
+/* =====================================================
    VARIABLES
------------------------------ */
+   ===================================================== */
+
+let selectedMood = null;
+let selectedLanguage = null;
 
 let currentSongs = [];
-let currentIndex = 0;
+let currentIndex = -1;
 let currentSong = null;
 
-
-/* -----------------------------
-   LOCAL STORAGE
------------------------------ */
-
 let favorites = JSON.parse(
-    localStorage.getItem("moodtuneFavorites")
-) || [];
+    localStorage.getItem("moodtuneFavorites") || "[]"
+);
 
 let playlists = JSON.parse(
-    localStorage.getItem("moodtunePlaylists")
-) || {};
+    localStorage.getItem("moodtunePlaylists") || "{}"
+);
+
+let songForPlaylist = null;
 
 
-/* -----------------------------
-   SAVE DATA
------------------------------ */
+/* =====================================================
+   SELECT MOOD
+   ===================================================== */
 
-function saveData() {
+function selectMood(mood, button) {
 
-    localStorage.setItem(
-        "moodtuneFavorites",
-        JSON.stringify(favorites)
-    );
+    selectedMood = mood;
 
-    localStorage.setItem(
-        "moodtunePlaylists",
-        JSON.stringify(playlists)
-    );
-}
+    document.querySelectorAll(".mood-btn").forEach(btn => {
+        btn.classList.remove("selected");
+    });
 
+    button.classList.add("selected");
 
-/* -----------------------------
-   SECTION CONTROL
------------------------------ */
-
-function hideSections() {
-
-    document.getElementById("homeSection").classList.add("hidden");
-    document.getElementById("searchSection").classList.add("hidden");
-    document.getElementById("favoritesSection").classList.add("hidden");
-    document.getElementById("playlistSection").classList.add("hidden");
-    document.getElementById("aboutSection").classList.add("hidden");
-}
-
-
-function showHome() {
-
-    hideSections();
-
-    document.getElementById("homeSection")
+    document.getElementById("languageSection")
         .classList.remove("hidden");
 
-    document.getElementById("pageTitle").innerText =
-        "Find Your Mood 🎶";
+    document.getElementById("recommendationSection")
+        .classList.add("hidden");
 
-    document.getElementById("pageSubtitle").innerText =
-        "Choose a mood and discover music that matches it.";
+    document.querySelectorAll(".category-btn").forEach(btn => {
+        btn.classList.remove("selected");
+    });
+
+    document.getElementById("languageSection")
+        .scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
 }
 
 
-function showAbout() {
+/* =====================================================
+   SELECT LANGUAGE
+   ===================================================== */
 
-    hideSections();
+function selectLanguage(language, button) {
 
-    document.getElementById("aboutSection")
+    selectedLanguage = language;
+
+    document.querySelectorAll(".category-btn").forEach(btn => {
+        btn.classList.remove("selected");
+    });
+
+    button.classList.add("selected");
+
+    showRecommendations();
+}
+
+
+/* =====================================================
+   SHOW RECOMMENDATIONS
+   ===================================================== */
+
+function showRecommendations() {
+
+    /*
+       STRICT FILTERING:
+
+       If Hindi is selected:
+       only music.Happy.Hindi etc.
+
+       If English is selected:
+       only music.Happy.English etc.
+    */
+
+    const songArray =
+        music[selectedMood][selectedLanguage];
+
+    currentSongs = songArray.map(song => {
+
+        return {
+            title: song[0],
+            artist: song[1],
+            language: selectedLanguage,
+            search: song[0] + " " + song[1]
+        };
+
+    });
+
+    currentIndex = -1;
+
+    document.getElementById("recommendationSection")
         .classList.remove("hidden");
 
-    document.getElementById("pageTitle").innerText =
-        "About MoodTune";
+    document.getElementById("recommendationTitle")
+        .textContent =
+        `${selectedMood} • ${selectedLanguage} 🎶`;
 
-    document.getElementById("pageSubtitle").innerText =
-        "Learn more about the project.";
+    displaySongs(currentSongs);
+
+    document.getElementById("recommendationSection")
+        .scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
 }
 
 
-/* -----------------------------
-   MOOD SELECTION
------------------------------ */
-
-function selectMood(mood) {
-
-    currentSongs = music[mood];
-    currentIndex = 0;
-
-    document.getElementById("recommendationTitle").innerText =
-        mood.charAt(0).toUpperCase() +
-        mood.slice(1) +
-        " Music For You";
-
-    displaySongs(
-        currentSongs,
-        "songList"
-    );
-}
-
-
-/* -----------------------------
+/* =====================================================
    DISPLAY SONGS
------------------------------ */
+   ===================================================== */
 
-function displaySongs(songs, containerId) {
+function displaySongs(songs) {
 
     const container =
-        document.getElementById(containerId);
+        document.getElementById("songList");
 
     container.innerHTML = "";
-
-    if (songs.length === 0) {
-
-        container.innerHTML =
-            `<p class="empty-message">
-                No songs found.
-            </p>`;
-
-        return;
-    }
 
 
     songs.forEach((song, index) => {
 
         const isFavorite =
             favorites.some(
-                item =>
-                    item.title === song.title &&
-                    item.artist === song.artist
+                fav => fav.title === song.title
             );
 
 
@@ -385,8 +445,8 @@ function displaySongs(songs, containerId) {
 
         card.innerHTML = `
 
-            <div class="song-cover">
-                🎵
+            <div class="song-number">
+                ${index + 1}
             </div>
 
             <div class="song-info">
@@ -395,27 +455,38 @@ function displaySongs(songs, containerId) {
 
                 <p>${song.artist}</p>
 
+                <div class="song-tags">
+
+                    <span class="song-tag">
+                        ${song.language}
+                    </span>
+
+                </div>
+
             </div>
 
-            <div class="song-buttons">
 
-                <button
-                    class="play-song"
-                    onclick="playSong(${index})">
+            <div class="song-actions">
+
+                <button onclick="playSong(${index})">
                     ▶
                 </button>
 
                 <button
-                    onclick="favoriteSong(${index})">
+                    class="favorite ${isFavorite ? "active" : ""}"
+                    onclick="toggleFavorite('${escapeQuotes(song.title)}')"
+                >
                     ${isFavorite ? "❤️" : "♡"}
                 </button>
 
                 <button
-                    onclick="choosePlaylist(${index})">
-                    +
+                    onclick="openPlaylistModal('${escapeQuotes(song.title)}')"
+                >
+                    ➕
                 </button>
 
             </div>
+
         `;
 
         container.appendChild(card);
@@ -425,108 +496,84 @@ function displaySongs(songs, containerId) {
 }
 
 
-/* -----------------------------
+/* =====================================================
    PLAY SONG
------------------------------ */
+   ===================================================== */
 
 function playSong(index) {
+
+    if (!currentSongs[index]) {
+        return;
+    }
 
     currentIndex = index;
 
     currentSong = currentSongs[index];
 
-    updatePlayer();
-
-    document.getElementById("player")
-        .classList.remove("hidden");
-
-    openCurrentSong();
-}
-
-
-/* -----------------------------
-   UPDATE PLAYER
------------------------------ */
-
-function updatePlayer() {
-
-    if (!currentSong) return;
-
     document.getElementById("currentTitle")
-        .innerText = currentSong.title;
+        .textContent = currentSong.title;
 
     document.getElementById("currentArtist")
-        .innerText = currentSong.artist;
-}
-
-
-/* -----------------------------
-   PLAY CURRENT SONG
------------------------------ */
-
-function playCurrentSong() {
-
-    if (!currentSong) return;
+        .textContent = currentSong.artist;
 
     openCurrentSong();
 }
 
 
-/* -----------------------------
-   OPEN SONG
------------------------------ */
+/* =====================================================
+   OPEN YOUTUBE
+   ===================================================== */
 
 function openCurrentSong() {
 
-    if (!currentSong) return;
+    if (!currentSong) {
 
+        alert(
+            "Please select a mood and language first."
+        );
 
-    if (currentSong.video) {
-
-        const frame =
-            document.getElementById("youtubeFrame");
-
-        frame.src =
-            "https://www.youtube.com/embed/" +
-            currentSong.video +
-            "?autoplay=1&rel=0";
-
-        document.getElementById("youtubePopup")
-            .classList.remove("hidden");
-
-    } else {
-
-        const url =
-            "https://www.youtube.com/results?search_query=" +
-            encodeURIComponent(currentSong.search);
-
-        window.open(url, "_blank");
-
+        return;
     }
 
+    const url =
+        "https://www.youtube.com/results?search_query=" +
+        encodeURIComponent(currentSong.search);
+
+    window.open(url, "_blank");
 }
 
 
-/* -----------------------------
-   CLOSE YOUTUBE
------------------------------ */
+/* =====================================================
+   PLAYER
+   ===================================================== */
 
-function closeYoutube() {
+function playCurrentSong() {
 
-    document.getElementById("youtubeFrame").src = "";
+    if (currentSong) {
 
-    document.getElementById("youtubePopup")
-        .classList.add("hidden");
+        openCurrentSong();
+
+    }
+    else if (currentSongs.length > 0) {
+
+        playSong(0);
+
+    }
+    else {
+
+        alert(
+            "Please select a mood and language first."
+        );
+
+    }
 }
 
-
-/* -----------------------------
-   NEXT SONG
------------------------------ */
 
 function nextSong() {
 
-    if (currentSongs.length === 0) return;
+    if (currentSongs.length === 0) {
+        return;
+    }
 
     currentIndex++;
 
@@ -534,130 +581,143 @@ function nextSong() {
         currentIndex = 0;
     }
 
-    currentSong =
-        currentSongs[currentIndex];
-
-    updatePlayer();
-
-    openCurrentSong();
+    playSong(currentIndex);
 }
 
 
-/* -----------------------------
-   PREVIOUS SONG
------------------------------ */
-
 function previousSong() {
 
-    if (currentSongs.length === 0) return;
+    if (currentSongs.length === 0) {
+        return;
+    }
 
     currentIndex--;
 
     if (currentIndex < 0) {
-        currentIndex = currentSongs.length - 1;
+        currentIndex =
+            currentSongs.length - 1;
     }
 
-    currentSong =
-        currentSongs[currentIndex];
-
-    updatePlayer();
-
-    openCurrentSong();
+    playSong(currentIndex);
 }
 
 
-/* -----------------------------
+/* =====================================================
    FAVORITES
------------------------------ */
+   ===================================================== */
 
-function favoriteSong(index) {
+function toggleFavorite(title) {
 
-    const song = currentSongs[index];
+    const song =
+        findSong(title);
 
-    const existing =
+    if (!song) {
+        return;
+    }
+
+
+    const index =
         favorites.findIndex(
-            item =>
-                item.title === song.title &&
-                item.artist === song.artist
+            fav => fav.title === title
         );
 
 
-    if (existing >= 0) {
+    if (index !== -1) {
 
-        favorites.splice(existing, 1);
+        favorites.splice(index, 1);
 
-    } else {
+    }
+    else {
 
         favorites.push(song);
 
     }
 
-    saveData();
 
-    displaySongs(
-        currentSongs,
-        "songList"
+    localStorage.setItem(
+        "moodtuneFavorites",
+        JSON.stringify(favorites)
     );
+
+
+    if (selectedMood && selectedLanguage) {
+        showRecommendations();
+    }
+
 }
 
 
-function toggleFavoriteCurrent() {
+/* =====================================================
+   FIND SONG
+   ===================================================== */
 
-    if (!currentSong) return;
+function findSong(title) {
 
+    for (const mood in music) {
 
-    const existing =
-        favorites.findIndex(
-            item =>
-                item.title === currentSong.title &&
-                item.artist === currentSong.artist
-        );
+        for (const language in music[mood]) {
 
+            const found =
+                music[mood][language].find(
+                    song => song[0] === title
+                );
 
-    if (existing >= 0) {
+            if (found) {
 
-        favorites.splice(existing, 1);
+                return {
+                    title: found[0],
+                    artist: found[1],
+                    language: language,
+                    search: found[0] + " " + found[1]
+                };
 
-    } else {
+            }
 
-        favorites.push(currentSong);
+        }
 
     }
 
-    saveData();
-
+    return null;
 }
 
 
-/* -----------------------------
-   SHOW FAVORITES
------------------------------ */
+/* =====================================================
+   FAVORITES PAGE
+   ===================================================== */
 
 function showFavorites() {
 
-    hideSections();
+    hideAllSections();
 
     document.getElementById("favoritesSection")
         .classList.remove("hidden");
 
-    document.getElementById("pageTitle").innerText =
-        "Your Favorites ❤️";
-
-    document.getElementById("pageSubtitle").innerText =
-        "Songs you have saved.";
-
     const container =
-        document.getElementById("favoriteList");
+        document.getElementById("favoritesList");
 
     container.innerHTML = "";
 
 
     if (favorites.length === 0) {
 
-        container.innerHTML =
-            `<p class="empty-message">
-                You haven't added any favorites yet.
-            </p>`;
+        container.innerHTML = `
+            <div class="song-card">
+
+                <div class="song-info">
+
+                    <h3>
+                        No favorite songs yet ❤️
+                    </h3>
+
+                    <p>
+                        Tap the heart button on a song
+                        to add it here.
+                    </p>
+
+                </div>
+
+            </div>
+        `;
 
         return;
     }
@@ -673,8 +733,8 @@ function showFavorites() {
 
         card.innerHTML = `
 
-            <div class="song-cover">
-                ❤️
+            <div class="song-number">
+                ${index + 1}
             </div>
 
             <div class="song-info">
@@ -683,24 +743,33 @@ function showFavorites() {
 
                 <p>${song.artist}</p>
 
+                <div class="song-tags">
+
+                    <span class="song-tag">
+                        ${song.language}
+                    </span>
+
+                </div>
+
             </div>
 
-            <div class="song-buttons">
+
+            <div class="song-actions">
 
                 <button
-                    class="play-song"
-                    onclick="playFavorite(${index})">
+                    onclick="playFavorite('${escapeQuotes(song.title)}')">
                     ▶
                 </button>
 
                 <button
-                    onclick="removeFavorite(${index})">
-                    🗑
+                    class="favorite active"
+                    onclick="toggleFavorite('${escapeQuotes(song.title)}')">
+                    ❤️
                 </button>
 
                 <button
-                    onclick="chooseFavoritePlaylist(${index})">
-                    +
+                    onclick="openPlaylistModal('${escapeQuotes(song.title)}')">
+                    ➕
                 </button>
 
             </div>
@@ -714,98 +783,79 @@ function showFavorites() {
 }
 
 
-/* -----------------------------
-   PLAY FAVORITE
------------------------------ */
+function playFavorite(title) {
 
-function playFavorite(index) {
+    const song =
+        findSong(title);
 
-    currentSong =
-        favorites[index];
+    if (!song) {
+        return;
+    }
 
-    currentSongs =
-        favorites;
+    currentSong = song;
 
-    currentIndex =
-        index;
+    document.getElementById("currentTitle")
+        .textContent = song.title;
 
-    updatePlayer();
-
-    document.getElementById("player")
-        .classList.remove("hidden");
+    document.getElementById("currentArtist")
+        .textContent = song.artist;
 
     openCurrentSong();
 }
 
 
-/* -----------------------------
-   REMOVE FAVORITE
------------------------------ */
-
-function removeFavorite(index) {
-
-    favorites.splice(index, 1);
-
-    saveData();
-
-    showFavorites();
-}
-
-
-/* -----------------------------
-   PLAYLIST CREATION
------------------------------ */
+/* =====================================================
+   PLAYLISTS
+   ===================================================== */
 
 function createPlaylist() {
 
+    const input =
+        document.getElementById("playlistName");
+
     const name =
-        prompt("Enter a name for your playlist:");
-
-    if (!name) return;
+        input.value.trim();
 
 
-    const trimmedName =
-        name.trim();
+    if (!name) {
 
-    if (trimmedName === "") return;
-
-
-    if (playlists[trimmedName]) {
-
-        alert("A playlist with this name already exists.");
+        alert(
+            "Please enter a playlist name."
+        );
 
         return;
     }
 
 
-    playlists[trimmedName] = [];
+    if (playlists[name]) {
 
-    saveData();
+        alert(
+            "A playlist with this name already exists."
+        );
+
+        return;
+    }
+
+
+    playlists[name] = [];
+
+    savePlaylists();
+
+    input.value = "";
 
     showPlaylists();
 }
 
 
-/* -----------------------------
-   SHOW PLAYLISTS
------------------------------ */
-
 function showPlaylists() {
 
-    hideSections();
+    hideAllSections();
 
-    document.getElementById("playlistSection")
+    document.getElementById("playlistsSection")
         .classList.remove("hidden");
 
-    document.getElementById("pageTitle").innerText =
-        "My Playlists 📂";
-
-    document.getElementById("pageSubtitle").innerText =
-        "Your personal music collections.";
-
-
     const container =
-        document.getElementById("playlistList");
+        document.getElementById("playlistsList");
 
     container.innerHTML = "";
 
@@ -816,10 +866,23 @@ function showPlaylists() {
 
     if (names.length === 0) {
 
-        container.innerHTML =
-            `<p class="empty-message">
-                You haven't created a playlist yet.
-            </p>`;
+        container.innerHTML = `
+            <div class="song-card">
+
+                <div class="song-info">
+
+                    <h3>
+                        No playlists yet 🎵
+                    </h3>
+
+                    <p>
+                        Create your first playlist above.
+                    </p>
+
+                </div>
+
+            </div>
+        `;
 
         return;
     }
@@ -834,25 +897,83 @@ function showPlaylists() {
             "playlist-card";
 
 
+        let songsHTML = "";
+
+
+        if (playlists[name].length === 0) {
+
+            songsHTML = `
+                <p style="color:#777;">
+                    This playlist is empty.
+                </p>
+            `;
+
+        }
+        else {
+
+            playlists[name].forEach(song => {
+
+                songsHTML += `
+
+                    <div class="playlist-song">
+
+                        <div>
+
+                            <strong>
+                                ${song.title}
+                            </strong>
+
+                            <br>
+
+                            <small>
+                                ${song.artist}
+                            </small>
+
+                        </div>
+
+                        <div class="song-actions">
+
+                            <button
+                                onclick="playFavorite('${escapeQuotes(song.title)}')">
+                                ▶
+                            </button>
+
+                            <button
+                                onclick="removeFromPlaylist('${escapeQuotes(name)}','${escapeQuotes(song.title)}')">
+                                ✕
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            });
+
+        }
+
+
         card.innerHTML = `
 
-            <h3>🎵 ${name}</h3>
+            <div class="playlist-card-header">
 
-            <p>
-                ${playlists[name].length} song(s)
-            </p>
+                <h3>
+                    🎵 ${name}
+                </h3>
 
-            <button
-                onclick="openPlaylist('${escapeQuotes(name)}')">
-                Open
-            </button>
+                <button
+                    class="delete-playlist"
+                    onclick="deletePlaylist('${escapeQuotes(name)}')">
+                    🗑️ Delete
+                </button>
 
-            <button
-                onclick="deletePlaylist('${escapeQuotes(name)}')">
-                🗑
-            </button>
+            </div>
+
+            ${songsHTML}
 
         `;
+
 
         container.appendChild(card);
 
@@ -861,66 +982,19 @@ function showPlaylists() {
 }
 
 
-/* -----------------------------
-   ESCAPE PLAYLIST NAME
------------------------------ */
+function openPlaylistModal(title) {
 
-function escapeQuotes(text) {
-
-    return text
-        .replace(/\\/g, "\\\\")
-        .replace(/'/g, "\\'")
-        .replace(/"/g, '\\"');
-
-}
+    songForPlaylist =
+        findSong(title);
 
 
-/* -----------------------------
-   CHOOSE PLAYLIST
------------------------------ */
-
-let songWaitingForPlaylist = null;
-
-
-function choosePlaylist(index) {
-
-    songWaitingForPlaylist =
-        currentSongs[index];
-
-    openPlaylistModal();
-}
-
-
-function chooseFavoritePlaylist(index) {
-
-    songWaitingForPlaylist =
-        favorites[index];
-
-    openPlaylistModal();
-}
-
-
-function addCurrentToPlaylist() {
-
-    if (!currentSong) {
-
-        alert("Please select a song first.");
-
+    if (!songForPlaylist) {
         return;
     }
 
-    songWaitingForPlaylist =
-        currentSong;
 
-    openPlaylistModal();
-}
-
-
-/* -----------------------------
-   PLAYLIST MODAL
------------------------------ */
-
-function openPlaylistModal() {
+    const modal =
+        document.getElementById("playlistModal");
 
     const choices =
         document.getElementById("playlistChoices");
@@ -934,18 +1008,14 @@ function openPlaylistModal() {
 
     if (names.length === 0) {
 
-        choices.innerHTML =
-            `<p class="empty-message">
+        choices.innerHTML = `
+            <p>
                 Create a playlist first.
             </p>
+        `;
 
-            <button
-                class="create-btn"
-                onclick="closePlaylistModal(); createPlaylist();">
-                + Create Playlist
-            </button>`;
-
-    } else {
+    }
+    else {
 
         names.forEach(name => {
 
@@ -955,14 +1025,16 @@ function openPlaylistModal() {
             button.className =
                 "playlist-choice";
 
-            button.innerText =
-                "📂 " + name;
+            button.textContent =
+                "🎵 " + name;
 
-            button.onclick = function() {
+            button.onclick =
+                function () {
 
-                addSongToPlaylist(name);
+                    addToPlaylist(name);
 
-            };
+                };
+
 
             choices.appendChild(button);
 
@@ -971,8 +1043,7 @@ function openPlaylistModal() {
     }
 
 
-    document.getElementById("playlistModal")
-        .classList.remove("hidden");
+    modal.classList.remove("hidden");
 }
 
 
@@ -981,210 +1052,190 @@ function closePlaylistModal() {
     document.getElementById("playlistModal")
         .classList.add("hidden");
 
-    songWaitingForPlaylist = null;
+    songForPlaylist = null;
 }
 
 
-/* -----------------------------
-   ADD SONG TO PLAYLIST
------------------------------ */
+function addToPlaylist(name) {
 
-function addSongToPlaylist(name) {
-
-    if (!songWaitingForPlaylist) return;
+    if (!songForPlaylist) {
+        return;
+    }
 
 
     const exists =
         playlists[name].some(
             song =>
-                song.title === songWaitingForPlaylist.title &&
-                song.artist === songWaitingForPlaylist.artist
+                song.title ===
+                songForPlaylist.title
         );
 
 
     if (exists) {
 
-        alert("This song is already in the playlist.");
-
-        closePlaylistModal();
+        alert(
+            "This song is already in the playlist."
+        );
 
         return;
     }
 
 
-    playlists[name].push(songWaitingForPlaylist);
-
-    saveData();
-
-    alert(
-        `"${songWaitingForPlaylist.title}" added to "${name}".`
+    playlists[name].push(
+        songForPlaylist
     );
+
+    savePlaylists();
 
     closePlaylistModal();
-}
 
-
-/* -----------------------------
-   OPEN PLAYLIST
------------------------------ */
-
-function openPlaylist(name) {
-
-    const songs =
-        playlists[name];
-
-
-    if (!songs) return;
-
-
-    hideSections();
-
-    document.getElementById("homeSection")
-        .classList.remove("hidden");
-
-
-    document.getElementById("pageTitle").innerText =
-        name;
-
-    document.getElementById("pageSubtitle").innerText =
-        "Your playlist";
-
-
-    currentSongs =
-        songs;
-
-    displaySongs(
-        songs,
-        "songList"
+    alert(
+        `"${songForPlaylist.title}" added to ${name}!`
     );
 
 }
 
 
-/* -----------------------------
-   DELETE PLAYLIST
------------------------------ */
+function removeFromPlaylist(name, title) {
 
-function deletePlaylist(name) {
+    if (!playlists[name]) {
+        return;
+    }
 
-    const confirmDelete =
-        confirm(
-            `Delete the playlist "${name}"?`
+
+    playlists[name] =
+        playlists[name].filter(
+            song =>
+                song.title !== title
         );
 
 
-    if (!confirmDelete) return;
-
-
-    delete playlists[name];
-
-    saveData();
+    savePlaylists();
 
     showPlaylists();
 }
 
 
-/* -----------------------------
+function deletePlaylist(name) {
+
+    if (!confirm(
+        `Delete playlist "${name}"?`
+    )) {
+        return;
+    }
+
+
+    delete playlists[name];
+
+    savePlaylists();
+
+    showPlaylists();
+}
+
+
+function savePlaylists() {
+
+    localStorage.setItem(
+        "moodtunePlaylists",
+        JSON.stringify(playlists)
+    );
+
+}
+
+
+/* =====================================================
    SEARCH
------------------------------ */
+   ===================================================== */
 
 function searchSongs() {
 
     const query =
         document.getElementById("searchInput")
-            .value
-            .toLowerCase()
-            .trim();
-
-
-    if (query === "") {
-
-        document.getElementById("searchSection")
-            .classList.add("hidden");
-
-        document.getElementById("homeSection")
-            .classList.remove("hidden");
-
-        return;
-    }
-
-
-    hideSections();
-
-    document.getElementById("searchSection")
-        .classList.remove("hidden");
-
-
-    const allSongs = [];
-
-
-    Object.values(music).forEach(moodSongs => {
-
-        moodSongs.forEach(song => {
-
-            const alreadyExists =
-                allSongs.some(
-                    item =>
-                        item.title === song.title &&
-                        item.artist === song.artist
-                );
-
-
-            if (!alreadyExists) {
-
-                allSongs.push(song);
-
-            }
-
-        });
-
-    });
-
+        .value
+        .toLowerCase()
+        .trim();
 
     const results =
-        allSongs.filter(song =>
-
-            song.title
-                .toLowerCase()
-                .includes(query)
-
-            ||
-
-            song.artist
-                .toLowerCase()
-                .includes(query)
-
-        );
-
-
-    displaySearchResults(results);
-}
-
-
-/* -----------------------------
-   SEARCH RESULTS
------------------------------ */
-
-function displaySearchResults(songs) {
-
-    const container =
         document.getElementById("searchResults");
 
-    container.innerHTML = "";
+    results.innerHTML = "";
 
 
-    if (songs.length === 0) {
+    if (!query) {
+        return;
+    }
 
-        container.innerHTML =
-            `<p class="empty-message">
-                No matching songs found.
-            </p>`;
+
+    const matches = [];
+
+
+    for (const mood in music) {
+
+        for (const language in music[mood]) {
+
+            music[mood][language].forEach(song => {
+
+                if (
+                    song[0].toLowerCase()
+                        .includes(query) ||
+
+                    song[1].toLowerCase()
+                        .includes(query)
+                ) {
+
+                    const alreadyAdded =
+                        matches.some(
+                            item =>
+                                item.title === song[0]
+                        );
+
+
+                    if (!alreadyAdded) {
+
+                        matches.push({
+
+                            title: song[0],
+                            artist: song[1],
+                            language: language,
+                            search:
+                                song[0] +
+                                " " +
+                                song[1]
+
+                        });
+
+                    }
+
+                }
+
+            });
+
+        }
+
+    }
+
+
+    if (matches.length === 0) {
+
+        results.innerHTML = `
+            <div class="song-card">
+
+                <div class="song-info">
+
+                    <h3>
+                        No matching songs found.
+                    </h3>
+
+                </div>
+
+            </div>
+        `;
 
         return;
     }
 
 
-    songs.forEach(song => {
+    matches.forEach((song, index) => {
 
         const card =
             document.createElement("div");
@@ -1195,8 +1246,8 @@ function displaySearchResults(songs) {
 
         card.innerHTML = `
 
-            <div class="song-cover">
-                🔍
+            <div class="song-number">
+                ${index + 1}
             </div>
 
             <div class="song-info">
@@ -1205,108 +1256,148 @@ function displaySearchResults(songs) {
 
                 <p>${song.artist}</p>
 
+                <div class="song-tags">
+
+                    <span class="song-tag">
+                        ${song.language}
+                    </span>
+
+                </div>
+
             </div>
 
-            <div class="song-buttons">
+
+            <div class="song-actions">
 
                 <button
-                    class="play-song"
-                    onclick='playSearchSong(${JSON.stringify(song)})'>
+                    onclick="playSearchSong('${escapeQuotes(song.title)}')">
                     ▶
                 </button>
 
                 <button
-                    onclick='favoriteSearchSong(${JSON.stringify(song)})'>
-                    ❤️
-                </button>
-
-                <button
-                    onclick='playlistSearchSong(${JSON.stringify(song)})'>
-                    +
+                    class="favorite"
+                    onclick="toggleFavorite('${escapeQuotes(song.title)}')">
+                    ♡
                 </button>
 
             </div>
 
         `;
 
-        container.appendChild(card);
+
+        results.appendChild(card);
 
     });
 
 }
 
 
-/* -----------------------------
-   SEARCH SONG PLAY
------------------------------ */
+function playSearchSong(title) {
 
-function playSearchSong(song) {
+    const song =
+        findSong(title);
 
-    currentSong =
-        song;
+    if (!song) {
+        return;
+    }
 
-    currentSongs =
-        [song];
+    currentSong = song;
 
-    currentIndex =
-        0;
+    document.getElementById("currentTitle")
+        .textContent = song.title;
 
-    updatePlayer();
-
-    document.getElementById("player")
-        .classList.remove("hidden");
+    document.getElementById("currentArtist")
+        .textContent = song.artist;
 
     openCurrentSong();
 }
 
 
-/* -----------------------------
-   SEARCH FAVORITE
------------------------------ */
+/* =====================================================
+   NAVIGATION
+   ===================================================== */
 
-function favoriteSearchSong(song) {
+function showHome() {
 
-    const exists =
-        favorites.some(
-            item =>
-                item.title === song.title &&
-                item.artist === song.artist
+    hideAllSections();
+
+    document.getElementById("homeSection")
+        .classList.remove("hidden");
+}
+
+
+function showAbout() {
+
+    hideAllSections();
+
+    document.getElementById("aboutSection")
+        .classList.remove("hidden");
+}
+
+
+function hideAllSections() {
+
+    document.getElementById("homeSection")
+        .classList.add("hidden");
+
+    document.getElementById("favoritesSection")
+        .classList.add("hidden");
+
+    document.getElementById("playlistsSection")
+        .classList.add("hidden");
+
+    document.getElementById("aboutSection")
+        .classList.add("hidden");
+}
+
+
+function resetSelection() {
+
+    selectedMood = null;
+    selectedLanguage = null;
+
+    currentSongs = [];
+    currentIndex = -1;
+
+    document.querySelectorAll(".mood-btn")
+        .forEach(btn =>
+            btn.classList.remove("selected")
         );
 
+    document.querySelectorAll(".category-btn")
+        .forEach(btn =>
+            btn.classList.remove("selected")
+        );
 
-    if (exists) {
+    document.getElementById("languageSection")
+        .classList.add("hidden");
 
-        alert("Already in favorites.");
+    document.getElementById("recommendationSection")
+        .classList.add("hidden");
 
-        return;
-    }
-
-
-    favorites.push(song);
-
-    saveData();
-
-    alert(
-        `"${song.title}" added to favorites.`
-    );
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 }
 
 
-/* -----------------------------
-   SEARCH PLAYLIST
------------------------------ */
+/* =====================================================
+   ESCAPE QUOTES
+   ===================================================== */
 
-function playlistSearchSong(song) {
+function escapeQuotes(text) {
 
-    songWaitingForPlaylist =
-        song;
+    return text
+        .replace(/\\/g, "\\\\")
+        .replace(/'/g, "\\'")
+        .replace(/"/g, '\\"');
 
-    openPlaylistModal();
 }
 
 
-/* -----------------------------
+/* =====================================================
    START
------------------------------ */
+   ===================================================== */
 
 showHome();
